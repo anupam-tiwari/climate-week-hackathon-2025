@@ -5,7 +5,6 @@ import pandas as pd
 from io import StringIO
 
 
-
 lol = """
 Status,FeatureType,PropertyName,SubPropertyName,GISPropNum,OMPPropID,Borough,District,x,y
 Activated,Misting Station,Newtown Barge Playground,,B135,B135,Brooklyn,B-01,-73.959782702112,40.7359820507185
@@ -13,8 +12,6 @@ Activated,Hydrant Spray Cap,Randall's Island Park,,M107,M107,Manhattan,M-11R,-73
 Activated,Hydrant Spray Cap,Randall's Island Park,,M107,M107,Manhattan,M-11R,-73.9341482801174,40.7833712248471
 Activated,Misting Station,Rockaway Beach Boardwalk,,Q163,Q163,Queens,Q-14,-73.8298133948064,40.5793258574036
 """
-
-# read the CSV string into a DataFrame
 cooling_locations = pd.read_csv(StringIO(lol))
 
 st.markdown("<h4 style='color:blue;'>Heat Portal</h4>", unsafe_allow_html=True)
@@ -33,13 +30,13 @@ if location and location.get("latitude") and location.get("longitude"):
     st.markdown("<span style='color:red;'>looks like you are in a heat wave area., here are few recomendations</span>", unsafe_allow_html=True)
     
     df = pd.DataFrame({
-        "lat": cooling_locatios["x"][:2],
-        "lon": cooling_locatios["y"][:2]
+        "lat": cooling_locations["x"][:2],
+        "lon": cooling_locations["y"][:2]
     })
     st.map(df[:3])
-    st.write(cooling_locatios[:3])
+    st.write(cooling_locations[:3])
     
-    df = pd.DataFrame(cooling_locatios)
+    df = pd.DataFrame(cooling_locations)
     
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
