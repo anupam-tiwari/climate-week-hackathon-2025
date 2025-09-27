@@ -29,11 +29,6 @@ if location and location.get("latitude") and location.get("longitude"):
     
     st.markdown("<span style='color:red;'>looks like you are in a heat wave area., here are few recomendations</span>", unsafe_allow_html=True)
     
-    df = pd.DataFrame({
-        "lat": cooling_locations["x"][:2],
-        "lon": cooling_locations["y"][:2]
-    })
-    st.map(df[:3])
     st.write(cooling_locations[:3])
     
     df = pd.DataFrame(cooling_locations)
