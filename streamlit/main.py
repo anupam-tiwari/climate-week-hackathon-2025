@@ -4,7 +4,7 @@ from streamlit_geolocation import streamlit_geolocation
 import pandas as pd
 
 
-cooling_locatios = pd.read_csv("Cool_It__NYC_2020_-_Cooling_Sites_20250927.csv")
+cooling_locatios = pd.read_csv(st.secrets["csv"])
 
 st.markdown("<h4 style='color:blue;'>Heat Portal</h4>", unsafe_allow_html=True)
 # Get user location
